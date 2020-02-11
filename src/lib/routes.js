@@ -10,7 +10,7 @@ const oauth = require('../lib/oauth.js');
 //////////////////////////////////signup///////////////////////////////////////////////
 
 
-router.post('/signup', (req, res,next) => {
+router.post('/signup', (req, res) => {
   let user = new Users(req.body);
   user.save(req.body)
     .then(userData => {

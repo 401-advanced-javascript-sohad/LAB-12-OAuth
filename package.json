@@ -4,7 +4,10 @@
   "description": "LAB: OAuth",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint '**/*.js'",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
