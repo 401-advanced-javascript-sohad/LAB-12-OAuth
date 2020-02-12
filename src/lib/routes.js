@@ -5,7 +5,7 @@ const router = express.Router();
 const Users = require('./users.js');
 const basicAuth = require('../lib/basic-auth.js');
 const oauth = require('../lib/oauth.js');
-
+const barearOauth = require('./barear-auth-middleware.js');
 
 //////////////////////////////////signup///////////////////////////////////////////////
 
@@ -42,6 +42,9 @@ router.get('/users',basicAuth,(req, res) => {
 router.get('/oauth', oauth, (req, res) => {
   res.status(200).send(req.token);
 });
+router.get('/user',barearOauth, (req,res)=>{
+res.status(200).json(req.user)
+})
 
 module.exports = router;
 

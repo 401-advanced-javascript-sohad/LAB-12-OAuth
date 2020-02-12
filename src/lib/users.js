@@ -10,7 +10,7 @@ require('dotenv').config();
 // let users = {};
 
 const users = new mongoose.Schema({
-  username: {type: String, required: true},
+  username: {type: String, required: true, unique:true},
   password: {type: String, required: true},
 });
 
@@ -27,9 +27,9 @@ users.pre('save', async function(){
 //////////////////////////////Authentication//////////////////////////////////////
 
 users.statics.basicAuthenticate = function(auth) {
+    console.log('auth in basic ' , auth);
     
   return this.findOne({username:auth.username})
-
     .then(user => user.trueCompare(auth.password))
     .catch(console.error);
 };
@@ -56,7 +56,19 @@ users.statics.list =  async function(){
   let results = await this.find({});
   return results;
 };
-
+users.statics.authenticateToken = async function(token){
+  try {
+    let tokenObject = jwt.verify(token, process.env.SECRET);
+    console.log(tokenObject)
+    if (tokenObject.username) {
+      return Promise.resolve(tokenObject);
+    } else {
+      return Promise.reject();
+    }
+  } catch (err) {
+    return Promise.reject();
+  }
+};
 module.exports = mongoose.model('users',users);
 
 

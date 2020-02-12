@@ -18,15 +18,21 @@ module.exports = (req, res, next) => {
 
   function basicAuth(authString) {
     let base64Buffer = Buffer.from(authString,'base64');
-
+    console.log('base64Buffer',base64Buffer);
+    
     let bufferStr = base64Buffer.toString();
+    console.log('bufferStr',bufferStr);
     
     let [username,password] = bufferStr.split(':');
     let auth = {username,password};
+    console.log('auth',auth);
     
+    // let user = new Users();
+    // console.log('user before auth ',user);
     
-    return Users.authenticateBasic(auth)
+    Users.basicAuthenticate(auth)
       .then( user =>{
+        console.log('user',user);
         console.log(user);
         req.user = user;
         req.token = user.generateToken(user);
