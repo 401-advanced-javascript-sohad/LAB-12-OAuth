@@ -4,15 +4,15 @@
 const Users = require('./users.js');
 
 module.exports = (req, res, next) => {
-
+  
   let [authType, encodedString] = req.headers.authorization.split(/\s+/);
-
+  
   switch(authType.toLowerCase()) {
-  case 'basic':
-    return basicAuth(encodedString);
-  default:
-    break;
-  }
+    case 'basic':
+      return basicAuth(encodedString);
+      default:
+        break;
+      }
 
   ////////////////////////////////////////////////////////////////////
 
@@ -40,3 +40,8 @@ module.exports = (req, res, next) => {
       });
   }
 };
+
+
+//***************************************** */
+
+

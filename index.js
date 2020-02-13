@@ -15,3 +15,4 @@ const options = {
 };
 mongoose.connect(MONGOOSE_URI, options);
 server.start(process.env.PORT);
+server.start()

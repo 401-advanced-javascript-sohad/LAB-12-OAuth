@@ -1,3 +1,4 @@
+
 'use strict';
 
 const superagent = require('superagent');
@@ -9,6 +10,10 @@ const remoteAPI = 'https://api.github.com/user';
 const CLIENT_ID = process.env.CLIENT_ID; 
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const API_SERVER = process.env.API_SERVER;
+
+
+
+
 
 module.exports = async function authorize(req, res, next) {
   try {
@@ -27,6 +32,7 @@ module.exports = async function authorize(req, res, next) {
 ///////////////////////////////////////////////////////////////////////////////////
 
 
+
 async function tokenCode(code) {
   let responseToken = await superagent.post(tokenUrl).send({
     code: code,
@@ -36,8 +42,8 @@ async function tokenCode(code) {
     grant_type: 'authorization_code',
   });
 
-
-
+  
+  
   let access_token = responseToken.body.access_token;
   return access_token;
 }
@@ -69,3 +75,9 @@ async function getUser(remoteUser) {
 
   return [user, token];
 }
+
+///******************************************************************** */
+
+
+
+
