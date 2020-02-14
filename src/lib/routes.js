@@ -47,20 +47,20 @@ router.get('/oauth', oauth, (req, res) => {
 
 
 router.get('/user',barearOauth, (req,res)=>{
-res.status(200).json(req.user)
+  res.status(200).json(req.user);
 });
 
 
 
 router.get('/public', (req, res) => {
   Users.list()
-    .then(data=>{
+    .then(userData=>{
       res.status(200).json(userData);
     });
   
-  });
+});
 
- ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
  
 
 router.get('/private', basicAuth, (req, res) => {

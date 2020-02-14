@@ -59,7 +59,7 @@ users.pre('save', async function(){
 //////////////////////////////Authentication//////////////////////////////////////
 
 users.statics.basicAuthenticate = function(auth) {
-    // console.log('auth in basic ' , auth);
+  // console.log('auth in basic ' , auth);
     
   return this.findOne({username:auth.username})
     .then(user => user.trueCompare(auth.password))
@@ -72,7 +72,7 @@ users.statics.basicAuthenticate = function(auth) {
 
 users.methods.trueCompare = function(password) {
   return bcrypt.compare(password, this.password)
-  .then(valid => valid ? this : null);
+    .then(valid => valid ? this : null);
 };
 
 

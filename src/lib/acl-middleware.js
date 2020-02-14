@@ -6,7 +6,7 @@ const users = require('./users.js');
 module.exports = (access) => {
   
   return (req, res, next) => {
-    console.log(access, req.user.role)
+    console.log(access, req.user.role);
     
     try {
 
