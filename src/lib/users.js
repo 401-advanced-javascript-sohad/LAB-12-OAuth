@@ -27,7 +27,7 @@ users.pre('save', async function(){
 //////////////////////////////Authentication//////////////////////////////////////
 
 users.statics.basicAuthenticate = function(auth) {
-    console.log('auth in basic ' , auth);
+  console.log('auth in basic ' , auth);
     
   return this.findOne({username:auth.username})
     .then(user => user.trueCompare(auth.password))
@@ -59,7 +59,7 @@ users.statics.list =  async function(){
 users.statics.authenticateToken = async function(token){
   try {
     let tokenObject = jwt.verify(token, process.env.SECRET);
-    console.log(tokenObject)
+    console.log(tokenObject);
     if (tokenObject.username) {
       return Promise.resolve(tokenObject);
     } else {

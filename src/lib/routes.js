@@ -43,8 +43,8 @@ router.get('/oauth', oauth, (req, res) => {
   res.status(200).send(req.token);
 });
 router.get('/user',barearOauth, (req,res)=>{
-res.status(200).json(req.user)
-})
+  res.status(200).json(req.user);
+});
 
 module.exports = router;
 
