@@ -13,12 +13,17 @@ const notFound = require( './middleware/404.js' );
 const errorHandler = require( './middleware/500.js');
 
 
+
+const authRouter = require('../src/lib/routes.js');
+const apiRouter = require('../routes/v1.js');
+
 // express app 
 
 const app = express();
 
 app.use(cors());
 app.use(morgan('dev'));
+
 
 app.use(express.json());
 app.use(router);
